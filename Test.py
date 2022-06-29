@@ -5,9 +5,9 @@ import ManyRectanglesBrooming
 import TwoRectangles
 
 
-def create_10_rectangles():
+def create_rectangles(amount):
     list_of_rectangles = []
-    for i in range(0, 1000):
+    for i in range(0, amount):
         max_x = random.randint(1, 1000)
         min_x = random.randint(1, 1000)
         max_y = random.randint(1, 1000)
@@ -73,11 +73,30 @@ class ManyRectanglesBroomingTestCases(unittest.TestCase):
                                                                          [(18, 0), (21, 0), (18, 11), (21, 11)],
                                                                          [(20, 8), (22, 8), (20, 13), (22, 13)]]), 5)
 
-    # def test_10_rectangles_input(self):
-    #     start_time = time.time()
-    #     print(ManyRectanglesBrooming.brooming(create_10_rectangles()))
-    #     end_time = time.time()
-    #     print('Execution time of 10 rectangles input: ', end_time - start_time, 'seconds.')
+    # def test_execution_time(self):
+    #
+    #     average_measurements = []
+    #     for amount in (100, 200, 400):
+    #         time_measurements = []
+    #
+    #         for i in range(4):
+    #             start_time = time.time()
+    #             ManyRectanglesBrooming.brooming(create_rectangles(amount))
+    #             end_time = time.time()
+    #             time_measurements.append(end_time - start_time)
+    #
+    #         average_measurements.append(sum(time_measurements)/4)
+    #
+    #     print(average_measurements)
+    #     print(average_measurements[2]/average_measurements[1], average_measurements[1]/average_measurements[0])
+
+    def test_random_rectangle_input_time(self):
+        amount = 1000
+        start_time = time.time()
+        ManyRectanglesBrooming.brooming(create_rectangles(amount))
+        end_time = time.time()
+        print(f'Execution time for {amount} rectangles input: {end_time - start_time}')
+
 
 
 # class TwoRectanglesTestCases(unittest.TestCase):
